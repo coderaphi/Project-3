@@ -1,0 +1,54 @@
+.search{
+    margin-top:80px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+}
+
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    margin-top: 120px;
+  }
+  
+  form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    margin-top: 120px;
+  }
+  
+  form.example button:hover {
+    background: #0b7dda;
+  }
+  
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .example{
+    max-width: 1298px;
+    justify-content: center;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    margin-left:198px;
+  }
+

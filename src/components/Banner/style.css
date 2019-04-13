@@ -1,0 +1,34 @@
+.banner{
+    margin-top: 120px;
+}
+
+.bg-image {
+    /* The image used */
+    background-image: url("https://cdn.pixabay.com/photo/2016/07/12/17/22/banner-1512645_960_720.png");
+    
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 100%;  
+  }
+  
+  /* Position text in the middle of the page/image */
+  .bg-text {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(255, 255, 255, 0.89); /* Black w/opacity/see-through */
+    color:rgb(28, 28, 28);
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    margin-top: 80px;
+    background-image: url("https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
