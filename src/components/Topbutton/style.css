@@ -1,0 +1,9 @@
+.buttonContainer{
+    display: grid;
+    grid-template-columns: 300px 300px 300px 300px;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-items: center;
+    grid-gap: 10px;
+
+}

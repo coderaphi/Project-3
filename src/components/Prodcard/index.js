@@ -1,46 +1,44 @@
 import React from 'react';
 import "./style.css";
 
-function prodcard (props) {
+function prodcard(props) {
 
-    return(
+    return (
 
-    <div className="row">   
-        <div class="ui link cards">
-      
+        <div className="ui link cards">
 
-            <div class="card">
-                <div class="image">
-                     <img alt="#" src={props.image} />
-            </div>
-            <div class="content">
-                <div class="header">{props.name}</div> 
-                    <div class="meta">
+
+            <div className="card">
+                <div className="image">
+                    <img alt="#" height="150px" width="20px" src={props.image} />
+                </div>
+                <div className="content">
+                    <div className="header">{props.name}</div>
+                    <div className="meta">
                         <a>Friends</a>
                     </div>
-                <div class="description">
-                 Matthew is an interior designer living in New York.
+                    <div className="description">
+                        Matthew is an interior designer living in New York.
+            </div>
+                </div>
+                <div className="extra content">
+                    <span className="right floated">
+                        {props.price}
+                    </span>
+                    <span>
+                        <i className="dollar icon"></i>
+                        Price
+            <div className="extra content">
+                            <div className="ui disabled primary button">Add</div>
+                            <div className="ui disabled button">Delete</div>
+                        </div>
+                    </span>
                 </div>
             </div>
-            <div class="extra content">
-              <span class="right floated">
-                {props.price}
-              </span>
-              <span>
-                <i class="dollar icon"></i>
-                Price
-                <div class="extra content">
-                  <div class="ui disabled primary button">Add</div>
-                    <div class="ui disabled button">Delete</div>
-                </div>
-              </span>
-            </div>
-          </div>
-            
+
 
 
         </div>
-    </div>     
     )
 }
 

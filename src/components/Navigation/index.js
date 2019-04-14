@@ -7,13 +7,13 @@ function navigation(props) {
     return (
         <div>
 
-            <div class="ui stackable menu">
-                <div class="item">
+            <div className="ui stackable menu">
+                <div className="item">
                     <img src="/images/logo.png"/>
             
-                    <a class="item active">Features</a>
-                    <a class="item">Testimonials</a>
-                    <a class="item">Sign-in</a>
+                    <a className="item active">Support</a>
+                    <a className="item">FAQ</a>
+                    <a className="item">Sign-in</a>
                 </div>
             </div>
             </div>
