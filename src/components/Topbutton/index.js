@@ -1,11 +1,11 @@
 import React from 'react'
 
-function topbutton() {
+function topbutton(props) {
     return (
-        <div className="buttonStrip" style={{display: 'flex', justifyContent: 'center'}}>
+        <div  className="buttonStrip" style={{display: 'flex', justifyContent: 'center'}}>
           <div className="large ui buttons">
-            <button className="ui button">Laptops</button>
-            <button className="ui button">Headphones</button>
+            <button onClick={(l) => props.laptopData('abcat0502000')} className="ui button">Laptops</button>
+            <button onClick={(l) => props.laptopData('abcat0204000')} className="ui button">Headphones</button>
             <button className="ui button">Apple Products</button>
             <button className="ui button">Laptops</button>
             <button className="ui button">Phones</button>
