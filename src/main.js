@@ -10,6 +10,9 @@ import Topbutton from './components/Topbutton';
 import Create from './components/Create';
 import  Loader  from './components/Loader';
 import Activeusers from './components/Activeusers'
+import faker from 'faker'
+import EventsToday from './components/EventsToday'
+import BucketTabs from './components/BucketTabs'
 
 
 
@@ -134,6 +137,8 @@ class Main extends Component {
 
   }
 
+ 
+
   render() {
     return (
 
@@ -171,27 +176,31 @@ class Main extends Component {
         
        
 
-        <div className="mainstage" > Taskd
-        <div className='main' > 
+        <div className="mainstage" > 
+        
+        <div className='main' style={{marginLeft:20, marginRight:20}} > 
         <Search className="searchPanel"
           categories={this.state.categories}
           categoryName={this.state.selectedCategory}
           onCategoryChange={this.onCategoryChange}
         />
-      
         <div className="createButton"> 
           <Button size='massive' color='orange' onClose={(e) => this.state ({createDataModal: false})}   onClick={(e)=> this.setState({createDataModal: true})}>Create Ivunt</Button>
         </div>
+        <BucketTabs />
+        
+      
+        
         </div>
         <div className="left-panel">
-        <p> left panel</p>
+        <EventsToday/>
         </div>
         
         <div className="right-panel"> 
         <Activeusers/>
         </div>
-        <div className='footer'>
-        <p> footer</p>
+        <div style={{textAlign: 'center', marginTop: 25, color: 'white'}} className='footer'>
+        <p > Copyrights reserved coderaphi inc</p>
         </div>
         </div>
 
@@ -205,7 +214,7 @@ class Main extends Component {
             <Modal.Content>
               {/* <Image wrapped size='medium' src='/images/avatar/large/rachel.png' /> */}
             
-              <div className="ui link cards" style={{justifyContent: 'center'}}>
+              <div className="ui link cards" >
 
                 {this.state.products.map((product) => (
                   <Prodcard
@@ -226,7 +235,7 @@ class Main extends Component {
        {
           this.state.createDataModal &&
           <Modal defaultOpen={true} centered={true} onClose={(e) => this.setState({ createDataModal: false })} size={'large'}>
-            <Modal.Header>{this.state.selectedCategory.label}</Modal.Header>
+            <Modal.Header style={{justifyContent: 'center', display:'flex'}}> <h1>Create your iVunt </h1></Modal.Header>
             <Modal.Content>
               {/* <Image wrapped size='medium' src='/images/avatar/large/rachel.png' /> */}
             

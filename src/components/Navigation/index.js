@@ -9,7 +9,7 @@ function navigation(props) {
 
             <div className="ui stackable menu">
                 <div className="item">
-                    <img src="/images/logo.png"/>
+                    <img src="/public/logo.png"/>
             
                     <a className="item active">Support</a>
                     <a className="item">FAQ</a>

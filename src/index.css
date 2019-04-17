@@ -19,15 +19,16 @@ body, html {
 
   .mainstage{
     display: grid;
-    background-color:#C8CDCC;
-    grid-template-columns: 10% auto 12%;
+    background-color:rgb(209, 233, 240);
+    grid-template-columns: 20% auto 12%;
     border: black;
-    grid-template-rows: 60px auto 60px;
+    grid-template-rows: 10px auto 60px;
     grid-template-areas: "hd hd hd"
                          "left main right"
                          "footer footer footer";
     height: 450px;
-    margin-top: 30px;
+    margin-top: 3px;
+    
     
 
    
@@ -41,7 +42,7 @@ body, html {
     margin-bottom:20px;
     border: 1px  #aaaaaa;
     padding: 10px;
-    box-shadow: 8px 1px 5px #aaaaaa;
+    box-shadow: 8px 5px 5px #aaaaaa;
   }
   .right-panel{
     background-color:rgb(255, 255, 255);
