@@ -2,15 +2,15 @@
 import React, { Component } from 'react';
 import Prodcard from "./components/Prodcard";
 import Navigation from "./components/Navigation"
-// import Banner from "./components/Banner";
 import Search from "./components/Search";
 import api from './util/api';
 import Carousel from './components/Carousel';
-import Wrapper from './components/Wrapper';
-import { Button, Header, Image, Modal } from 'semantic-ui-react';
+import { Button, Header, Image, Modal, Card, Feed } from 'semantic-ui-react';
 import Topbutton from './components/Topbutton';
 import Create from './components/Create';
-// import InputModal from './components/inputModal';
+import  Loader  from './components/Loader';
+import Activeusers from './components/Activeusers'
+
 
 
 class Main extends Component {
@@ -24,12 +24,15 @@ class Main extends Component {
     error: "",
     showProdModal: false,
     topProducts: [],
-    laptops:[],
+  
+
+
+
     createDataModal:false
   }
 
   componentDidMount() {
-
+    
     api.getProducts()
     .then (res=>  this.setState  ({topProducts: res.data.products}))
     .catch(err=> console.log(err));
@@ -48,11 +51,65 @@ class Main extends Component {
 
   laptopData =(cat) => {
     console.log(cat)
-    api.getProducts(cat).then (res =>{
+    api.getLaptops(cat).then (res =>{
       console.log(res);
       this.setState({topProducts: res.data.products})
     })
   }
+  cameraData =(cat) => {
+    console.log(cat)
+    api.getCameras(cat).then (res =>{
+      console.log(res);
+      this.setState({topProducts: res.data.products})
+    })
+  }
+  moviesData =(cat) => {
+    console.log(cat)
+    api.getMovies(cat).then (res =>{
+      console.log(res);
+      this.setState({topProducts: res.data.products})
+    })
+  }
+  phonesData =(cat) => {
+    console.log(cat)
+    api.getPhones(cat).then (res =>{
+      console.log(res);
+      this.setState({topProducts: res.data.products})
+    })
+  }
+
+  tvData =(cat) => {
+    console.log(cat)
+    api.getTv(cat).then (res =>{
+      console.log(res);
+      this.setState({topProducts: res.data.products})
+    })
+  }
+
+  fridgeData =(cat) => {
+    console.log(cat)
+    api.getFridge(cat).then (res =>{
+      console.log(res);
+      this.setState({topProducts: res.data.products})
+    })
+  }
+
+  homeAudioData =(cat) => {
+    console.log(cat)
+    api.getHomeAudio(cat).then (res =>{
+      console.log(res);
+      this.setState({topProducts: res.data.products})
+    })
+  }
+
+  fitnessWearables =(cat) => {
+    console.log(cat)
+    api.getFitnessWearables(cat).then (res =>{
+      console.log(res);
+      this.setState({topProducts: res.data.products})
+    })
+  }
+  
 
   onCategoryChange = (category) => {
     console.log(category);
@@ -87,6 +144,15 @@ class Main extends Component {
         <Topbutton
         
         laptopData={this.laptopData}
+        moviesData={this.moviesData}
+        cameraData={this.cameraData}
+        phonesData={this.phonesData}
+        homeAudioData={this.homeAudioData}
+        tvData={this.tvData}
+        fitnessWearables={this.fitnessWearables}
+        playstationData={this.playstationData}
+        fridgeData={this.fridgeData}
+     
         >
         
 
@@ -103,16 +169,33 @@ class Main extends Component {
 
 
         
-        <Search
+       
+
+        <div className="mainstage" > Taskd
+        <div className='main' > 
+        <Search className="searchPanel"
           categories={this.state.categories}
           categoryName={this.state.selectedCategory}
           onCategoryChange={this.onCategoryChange}
         />
       
-        <div ClassName="CreateButton" style={{justifyContent:"center"}} onClose={(e) => this.state ({createDataModal: false})}   onClick={(e)=> this.setState({createDataModal: true})}> 
-        <Button >Create Ivunt</Button>
-
+        <div className="createButton"> 
+          <Button size='massive' color='orange' onClose={(e) => this.state ({createDataModal: false})}   onClick={(e)=> this.setState({createDataModal: true})}>Create Ivunt</Button>
         </div>
+        </div>
+        <div className="left-panel">
+        <p> left panel</p>
+        </div>
+        
+        <div className="right-panel"> 
+        <Activeusers/>
+        </div>
+        <div className='footer'>
+        <p> footer</p>
+        </div>
+        </div>
+
+
          
        
         {

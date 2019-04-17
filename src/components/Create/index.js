@@ -1,6 +1,6 @@
 import React from 'react';
 import "./style.css";
-import { Form } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 
 function create(props) {
     return (
@@ -8,7 +8,7 @@ function create(props) {
              <Form>
                 <Form.Field widths='equal'>
                  <Form.Input fluid label='Item Name' placeholder='Item Name' />
-                 <Form.Input fluid label='URL' placeholder='URL' />
+                 <Form.Input fluid label='Product Link' placeholder='URL' />
                  <Form.Input fluid label='Image URL ' placeholder='Image URL' />
           
                  <select name="cars">
@@ -27,8 +27,7 @@ function create(props) {
                     <option value="Other">Other</option>
                 </select>
                </Form.Field>
-        <Form.Group inline>
-         </Form.Group>
+               <Button type='submit'>Submit</Button>
         
          </Form>
 

@@ -16,6 +16,61 @@ body, html {
     justify-items: center;
     grid-gap: 10px;
   }
- 
+
+  .mainstage{
+    display: grid;
+    background-color:#C8CDCC;
+    grid-template-columns: 10% auto 12%;
+    border: black;
+    grid-template-rows: 60px auto 60px;
+    grid-template-areas: "hd hd hd"
+                         "left main right"
+                         "footer footer footer";
+    height: 450px;
+    margin-top: 30px;
+    
+
+   
+
+  }
+  .left-panel{
+    background-color: rgb(255, 255, 255);
+    grid-area: left;
+    padding-left:20px;
+    margin-left:20px;
+    margin-bottom:20px;
+    border: 1px  #aaaaaa;
+    padding: 10px;
+    box-shadow: 8px 1px 5px #aaaaaa;
+  }
+  .right-panel{
+    background-color:rgb(255, 255, 255);
+    grid-area: right;
+    margin-right:20px;
+    margin-bottom:20px;
+    border: 1px  #aaaaaa;
+    padding: 10px;
+    box-shadow: 8px 1px 5px #aaaaaa;
+    justify-content: center;
+    display:flex;
+
+  }
+  .footer{
+    background-color: #67696B;
+    grid-area: footer;
+  }
+  .main{
+    grid-area: main;
+    
+    justify-content: center;
+  }
+  .createButton{
+    justify-content: center;
+    display:flex;
+  }
+  .search{
+    margin-right:59px;
+    margin-bottom:25px;
+  }
 
   
