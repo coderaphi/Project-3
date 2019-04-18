@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 import Prodcard from "./components/Prodcard";
 import Navigation from "./components/Navigation"
-import Search from "./components/Search";
+import SearchProd from "./components/Search";
 import api from './util/api';
 import Carousel from './components/Carousel';
-import { Button, Header, Image, Modal, Card, Feed } from 'semantic-ui-react';
+import { Button, Header, Image, Modal, Card, Feed ,search, Divider, Grid,  Icon,  Segment} from 'semantic-ui-react';
 import Topbutton from './components/Topbutton';
 import Create from './components/Create';
 import  Loader  from './components/Loader';
@@ -13,6 +13,7 @@ import Activeusers from './components/Activeusers'
 import faker from 'faker'
 import EventsToday from './components/EventsToday'
 import BucketTabs from './components/BucketTabs'
+import Searchcreate from './components/Searchcreate'
 
 
 
@@ -27,11 +28,8 @@ class Main extends Component {
     error: "",
     showProdModal: false,
     topProducts: [],
-  
-
-
-
-    createDataModal:false
+    createDataModal:false,
+    createivunt:[]
   }
 
   componentDidMount() {
@@ -49,6 +47,16 @@ class Main extends Component {
       console.log(categories);
       this.setState({ categories: categories });
      
+    });
+  }
+
+  addProducts = (product) => {
+    const {createivunt} = this.state;
+    createivunt.push(product);
+    console.log(product)
+    this.setState ({
+      createivunt: createivunt
+      
     });
   }
 
@@ -168,26 +176,29 @@ class Main extends Component {
           this.state.topProducts.length > 0 &&
           <Carousel
             products={this.state.topProducts}
+            addProducts= {this.addProducts}
             
           />
         }
-
-
         
-       
-
         <div className="mainstage" > 
         
         <div className='main' style={{marginLeft:20, marginRight:20}} > 
-        <Search className="searchPanel"
+        <Searchcreate/>  
+        <SearchProd className="searchPanel"
           categories={this.state.categories}
           categoryName={this.state.selectedCategory}
           onCategoryChange={this.onCategoryChange}
         />
+
+
+        
         <div className="createButton"> 
           <Button size='massive' color='orange' onClose={(e) => this.state ({createDataModal: false})}   onClick={(e)=> this.setState({createDataModal: true})}>Create Ivunt</Button>
         </div>
-        <BucketTabs />
+        <BucketTabs 
+        createivunt ={this.state.createivunt}
+        />
         
       
         
@@ -222,7 +233,7 @@ class Main extends Component {
                     name={product.name}
                     image={product.image}
                     price={product.salePrice}
-                    
+                    addProducts= {()=>this.addProducts(product)}
                   >
 
                   </Prodcard>

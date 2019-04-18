@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import ReactDOM from 'react-dom';
 import Coverflow from 'react-coverflow';
+import { Button, Dropdown } from 'semantic-ui-react';
+import './style.css';
 
 import Prodcard from '../Prodcard';
 
@@ -8,11 +10,12 @@ const fn = function () {
 }
 function Carousel(props) {
 
+  const [visible, setVisible] = useState(false);
+
   return (
 
     <div>
-     
-
+    
       <Coverflow
         displayQuantityOfSide={2}
         enableScroll={false}
@@ -26,32 +29,32 @@ function Carousel(props) {
 
         {
           props.products.filter(p => p.image).map((p, i) => {
-            const imgData = (<img
-              key={`img-${p.productId}`}
-              src={p.image}
-              // width={'285px'}
-              height={'250px'}
-              alt={p.name}
-              style={{width: 'auto'}}
-              data-action="https://facebook.github.io/react/"
-            />);
-
+        
             const t1 = (
-              <div alt={p.name} style={{backgroundColor: '#FFF',padding: '60px', height:'285px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                {/* <img
-                  key={`img-${p.productId}`}
-                  src={p.image}
-                  // width={'250px'}
-                  // height={'250px'}
-                  alt={p.name}
-                  style={{width: '250px'}}
-                  data-action="https://facebook.github.io/react/"
-                /> */}
-                <div style={{backgroundImage: `url(${p.image})`,  width:' 100%', backgroundPosition: 'center', height: '100%', backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
+              <div alt={p.name} style={{
+                backgroundColor: '#FFF', padding: '20px 60px', display: 'grid', 
+                justifyContent: 'center', alignItems: 'center', gridTemplateRows: '25px 250px'
+              }}>
+                <div style={{textAlign: 'center'}}>
+                <Button.Group color='primary'>
+                    <Button 
+                    onClick={()=> props.addProducts(p)}
+                    size={'tiny'}>Add</Button>
+                    <Dropdown
+                    as={Button}
+                    className='icon'
+                    options={[
+                        { key: 'edit', text: 'Edit Post', value: 'edit' },
+                        { key: 'delete', text: 'Remove Post', value: 'delete' },
+                        { key: 'hide', text: 'Hide Post', value: 'hide' }
+                    ]}
+                    trigger={<React.Fragment />}
+                    />
+                </Button.Group>
+                </div>
+                <div style={{backgroundImage: `url(${p.image})`,  width:'225px', backgroundPosition: 'center', height: '100%', backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}} />
               </div>
-            )
-
-            // const t = <div style={{background: `url(${p.image})`, backgroundSize: 'length', width: '285px', height: '285px', backgroundRepeat: 'no-repeat'}} />
+            );
 
             return t1;
 

@@ -1,17 +1,39 @@
 import React, { Component } from 'react'
-import { Tab } from 'semantic-ui-react'
-// import Prodcard from "./components/Prodcard"; /////Ask HASIKA
+import { Tab, Icon } from 'semantic-ui-react'
+import Prodcard from "../Prodcard"
 
-const panes = [
-  { menuItem: 'Tech Products', render: () => <Tab.Pane>
-    {/* <Prodcard/> */}////////Ask HASIKA
+const createpanes = createivunt => {
+    return (
+     
+        [
+        { menuItem: 'Tech Products', render: () => <Tab.Pane>
+          
+          
+          <div className="ui link cards" >
 
+        {createivunt.map((product) => (
+        <Prodcard
+            key={`p-${product.name}`}
+            name={product.name}
+            image={product.image}
+            price={product.salePrice}
+            addProducts= {()=>this.addProducts(product)}
+        >
+        
 
-  </Tab.Pane> },
-  { menuItem: 'Special events', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
-  { menuItem: 'Fund my Ivunt', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
-  { menuItem: 'Charity', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
-]
+        </Prodcard>
+))}
+</div>
+      
+        </Tab.Pane> },
+        { menuItem: 'Special events', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+        { menuItem: 'Fund my Ivunt', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
+        { menuItem: 'Charity', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
+        { menuItem: '＋ Add New', render: () => <Tab.Pane></Tab.Pane> },
+      ]
+    )
+}
+
 
 class BucketTabs extends Component {
   state = { activeIndex: 1 }
@@ -21,7 +43,7 @@ class BucketTabs extends Component {
 
   render() {
     const { activeIndex } = this.state
-
+    const panes = createpanes(this.props.createivunt)
     return (
       <div>
         {/* <div>activeIndex: {activeIndex}</div> */}

@@ -1,3 +1,7 @@
-.topbutton{
-    
+.ui.primary.button, .ui.primary.buttons .button {
+    font-size: 10px;
+}
+
+.ui.dropdown .menu>.item  {
+    font-size: 10px;
 }
