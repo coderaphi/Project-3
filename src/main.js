@@ -32,29 +32,51 @@ class Main extends Component {
   };
 
   componentDidMount() {
-    api
-      .getProducts()
-      .then(res =>
-        this.setState({ topProducts: res.data.products, loading: false })
-      )
-      .catch(err => {
-        console.log(err);
-        this.setState({ loading: false });
-      });
+    const _this = this;
+    Promise.all([
+      api.getProducts(),
+      api.getCategories(),
+      api.getApiProducts()
+    ]).then(function(values) {
+      console.log(values);
+      // const allProducts = [...values[0].data.products, ...values[2].data];
 
-    api
-      .getCategories()
-      .then(res => {
-        return res.data.categories.map(c => ({ id: c.id, name: c.name }));
-      })
-      .then(categories => {
-        console.log(categories);
-        this.setState({ categories: categories, loading: false });
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState({ loading: false });
+      const categories = values[1].data.categories.map(c => ({
+        id: c.id,
+        name: c.name
+      }));
+
+      _this.setState({
+        loading: false,
+        topProducts: values[0].data.products,
+        createivunt: values[2].data,
+        categories: categories
       });
+    });
+
+    // api
+    //   .getProducts()
+    //   .then(res =>
+    //     this.setState({ topProducts: res.data.products, loading: false })
+    //   )
+    //   .catch(err => {
+    //     console.log(err);
+    //     this.setState({ loading: false });
+    //   });
+
+    // api
+    //   .getCategories()
+    //   .then(res => {
+    //     return res.data.categories.map(c => ({ id: c.id, name: c.name }));
+    //   })
+    //   .then(categories => {
+    //     console.log(categories);
+    //     this.setState({ categories: categories, loading: false });
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //     this.setState({ loading: false });
+    //   });
   }
 
   addProducts = (product, tabIndex) => {
@@ -200,7 +222,12 @@ class Main extends Component {
                       name={product.name}
                       image={product.image}
                       price={product.salePrice}
-                      addProducts={(tabName, tIndex) => this.addProducts({...product, tabName: tabName}, tIndex)}
+                      addProducts={(tabName, tIndex) =>
+                        this.addProducts(
+                          { ...product, tabName: tabName },
+                          tIndex
+                        )
+                      }
                     />
                   ))}
                 </div>

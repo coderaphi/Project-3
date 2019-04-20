@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import { Button, Form } from "semantic-ui-react";
+import api from "../../util/api";
 
 function create(props) {
   const [itemName, setItemName] = useState("");
@@ -8,16 +9,25 @@ function create(props) {
   const [imageUrl, setImageUrl] = useState("");
   const [occasion, setOccasion] = useState("");
 
-  const onSubmit = () => {
-    props.addProduct({
-        name: itemName,
-        image: imageUrl,
-        productId: new Date().getTime(),
-        tabName: 'My iVunt',
-        salePrice: 243
-    });
-    props.onClose();
-  }
+  const onSubmit = async () => {
+    console.log('here');
+    const product = {
+      name: itemName,
+      image: imageUrl,
+      productId: new Date().getTime(),
+      tabName: "My iVunt",
+      salePrice: 243
+    };
+    try {
+      console.log(product);
+      const prod = await api.createProduct(product);
+      console.log(prod);
+      props.addProduct(product);
+      props.onClose();
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <div>
       <Form>
