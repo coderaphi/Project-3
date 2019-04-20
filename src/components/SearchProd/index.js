@@ -19,11 +19,6 @@ function search(props) {
                         }
                     ))}
                 />
-                <datalist id="categories">
-                    {props.categories.map(category => (
-                        <option value={category.name} key={category.id} cat_id={category.id} />
-                    ))}
-                </datalist>
 
             </form>
 

@@ -1,57 +1,60 @@
-import React, { Component } from 'react'
-import { Tab, Icon } from 'semantic-ui-react'
-import Prodcard from "../Prodcard"
+import React, { Component, useState, useContext } from "react";
+import { Tab, Icon } from "semantic-ui-react";
+import AddedProdCard from "../AddedProdCard";
+import TabContext from "../../TabContext";
 
-const createpanes = createivunt => {
-    return (
-     
-        [
-        { menuItem: 'Tech Products', render: () => <Tab.Pane>
-          
-          
-          <div className="ui link cards" >
+const createpanes = (createivunt, deleteProducts, tabs) => {
+  const newTabs = tabs.map(tab => {
+    return {
+      menuItem: tab,
+      render: () => (
+        <Tab.Pane>
+          <div className="ui link cards">
+            {createivunt.filter(c => c.tabName === tab).map((product, i) => (
+              <AddedProdCard
+                key={`p-${product.productId}-${i}`}
+                name={product.name}
+                image={product.image}
+                price={product.salePrice}
+                deleteProducts={() => deleteProducts(product)}
+              />
+            ))}
+          </div>
+        </Tab.Pane>
+      )
+    }
+  });
 
-        {createivunt.map((product) => (
-        <Prodcard
-            key={`p-${product.name}`}
-            name={product.name}
-            image={product.image}
-            price={product.salePrice}
-            addProducts= {()=>this.addProducts(product)}
-        >
-        
+  return [
+    ...newTabs,
+    {
+      menuItem: '+ Add New',
+      render: () => (
+        <Tab.Pane>
+          <div className="ui link cards">
+            New Tab
+          </div>
+        </Tab.Pane>
+      )
+    }
+  ]
+};
 
-        </Prodcard>
-))}
-</div>
-      
-        </Tab.Pane> },
-        { menuItem: 'Special events', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
-        { menuItem: 'Fund my Ivunt', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
-        { menuItem: 'Charity', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
-        { menuItem: '＋ Add New', render: () => <Tab.Pane></Tab.Pane> },
-      ]
-    )
+function BucketTabs(props) {
+  // const [activeIndex, setActiveIndex ] = useState(0);
+  const tabContext = useContext(TabContext);
+  console.log(tabContext);
+  const panes = createpanes(props.createivunt, props.deleteProducts, tabContext.tabs);
+  return (
+    <div>
+
+      <Tab
+        panes={panes}
+        activeIndex={tabContext.tabIndex}
+        onTabChange={(e, { activeIndex }) => tabContext.changeActiveTab(activeIndex)}
+      />
+    </div>
+  );
 }
 
-
-class BucketTabs extends Component {
-  state = { activeIndex: 1 }
-
-  handleRangeChange = e => this.setState({ activeIndex: e.target.value })
-  handleTabChange = (e, { activeIndex }) => this.setState({ activeIndex })
-
-  render() {
-    const { activeIndex } = this.state
-    const panes = createpanes(this.props.createivunt)
-    return (
-      <div>
-        {/* <div>activeIndex: {activeIndex}</div> */}
-        <input type='range' max='2' value={activeIndex} onChange={this.handleRangeChange} />
-        <Tab panes={panes} activeIndex={activeIndex} onTabChange={this.handleTabChange} />
-      </div>
-    )
-  }
-}
-
-export default BucketTabs
+export default BucketTabs;

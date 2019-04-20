@@ -13,6 +13,11 @@ export default {
     
   },
 
+  getProducts: function (category ='abcat0600000'){
+    console.log(category);
+    return axios.get(`https://api.bestbuy.com/v1/products((categoryPath.id=${category}))?apiKey=${API_KEY}&format=json`); 
+  },
+
   getMovies: function (category ='abcat0600000'){
     console.log(category);
     return axios.get(`https://api.bestbuy.com/v1/products((categoryPath.id=${category}))?apiKey=${API_KEY}&format=json`); 
