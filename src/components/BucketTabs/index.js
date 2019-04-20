@@ -2,8 +2,9 @@ import React, { Component, useState, useContext } from "react";
 import { Tab, Icon } from "semantic-ui-react";
 import AddedProdCard from "../AddedProdCard";
 import TabContext from "../../TabContext";
+import "./style.css";
 
-const createpanes = (createivunt, deleteProducts, tabs) => {
+const createpanes = (createivunt = [], deleteProducts, tabs) => {
   const newTabs = tabs.map(tab => {
     return {
       menuItem: tab,

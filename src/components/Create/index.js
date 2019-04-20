@@ -8,6 +8,7 @@ function create(props) {
   const [url, setUrl] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [occasion, setOccasion] = useState("");
+  const [price, setPrice] = useState("");
 
   const onSubmit = async () => {
     console.log('here');
@@ -16,7 +17,7 @@ function create(props) {
       image: imageUrl,
       productId: new Date().getTime(),
       tabName: "My iVunt",
-      salePrice: 243
+      salePrice: price
     };
     try {
       console.log(product);
@@ -55,6 +56,14 @@ function create(props) {
             type="text"
             value={imageUrl}
             onChange={e => setImageUrl(e.target.value)}
+          />
+           <Form.Input
+            fluid
+            label="Price"
+            placeholder="Price"
+            type="text"
+            value={price}
+            onChange={e => setPrice(e.target.value)}
           />
 
           <select

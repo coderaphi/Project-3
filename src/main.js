@@ -52,6 +52,8 @@ class Main extends Component {
         createivunt: values[2].data,
         categories: categories
       });
+    }).catch(err => {
+      this.setState({ loading: false });
     });
 
     // api
