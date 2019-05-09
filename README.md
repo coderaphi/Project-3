@@ -7,10 +7,12 @@
 iVunt is an online gifting social network built to eradicate the guess work when making gift purchases for your loved ones. It helps users store their every day wish lists so that it can be seen by their friends and family when they decide to buy something for them.
 
 Purpose
+-------
 
 Currently there are two main gift registries in the world Wedding and Baby registry.  However there isnt any registry that focuses mainly on our day to day wants and needs. The
 
 Technologies used
+-----------------
 
 Node.Js
 React
@@ -24,6 +26,7 @@ HTML
 Heroku
 
 APIs used
+---------
 
 BestbuyAPI
 
